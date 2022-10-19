@@ -60,7 +60,7 @@ mkdir ~/airflow/dags
 mv spark_dag.py ~/airflow/dags
 ```
 
-## 5, Open port 8081 to see Airflow UI and check if `example_yugabyte_etl` exists. 
+## 5, Open port 8181 to see Airflow UI and check if `example_yugabyte_etl` exists. 
 If it does not exist yet, give it a few seconds to refresh.
 
 ## 7. Update Spark Connection and unpause the `example_yugabyte_etl`.
