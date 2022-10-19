@@ -29,16 +29,30 @@ We will be using the quick start script that Airflow provides [here](https://air
 bash setup.sh
 ```
 
-## 3. Start Spark in standalone mode
+## 3. Move spark_dag.py to ~/airflow/dags
 
-### 3.1 - Start master
+### 3.1 - Create ~/airflow/dags
+
+```bash
+mkdir ~/airflow/dags
+```
+
+### 3.2 - Move spark_dag.py
+
+```bash
+mv spark_dag.py ~/airflow/dags
+```
+
+## 4. Start Spark in standalone mode
+
+### 4.1 - Start master
 
 ```bash
 ./spark-3.2.2-bin-hadoop3.2/sbin/start-master.sh
 ```
 The reason we are using spark 3.2.2 is because we run into `Unsupported data source V2 partitioning type: CassandraPartitioning` errors when using spark 3.3.X.
 
-### 3.2 - Start worker
+### 4.2 - Start worker
 
 Open port 8080 in the browser, copy the master URL, and paste in the designated spot below
 
@@ -46,40 +60,26 @@ Open port 8080 in the browser, copy the master URL, and paste in the designated 
 ./spark-3.2.2-bin-hadoop3.2/sbin/start-worker.sh <master-URL>
 ```
 
-## 4. Move spark_dag.py to ~/airflow/dags
-
-### 4.1 - Create ~/airflow/dags
-
-```bash
-mkdir ~/airflow/dags
-```
-
-### 4.2 - Move spark_dag.py
-
-```bash
-mv spark_dag.py ~/airflow/dags
-```
-
 ## 5, Open port 8181 to see Airflow UI and check if `example_yugabyte_etl` exists. 
 If it does not exist yet, give it a few seconds to refresh.
 
-## 7. Update Spark Connection and unpause the `example_yugabyte_etl`.
+## 6. Update Spark Connection and unpause the `example_yugabyte_etl`.
 
-### 7.1 - Under the `Admin` section of the menu, select `spark_default` and update the host to the Spark master URL. Save once done.
+### 6.1 - Under the `Admin` section of the menu, select `spark_default` and update the host to the Spark master URL. Save once done.
 
-### 7.2 - Select the `DAG` menu item and return to the dashboard. Unpause the `example_yugabyte_etl`, and then click on the `example_yugabyte_etl`link. 
+### 6.2 - Select the `DAG` menu item and return to the dashboard. Unpause the `example_yugabyte_etl`, and then click on the `example_yugabyte_etl`link. 
 
-## 8. Trigger the DAG from the tree view and click on the graph view afterwards
+## 7. Trigger the DAG from the tree view and click on the graph view afterwards
 
-## 9. Confirm data in Yugabyte
+## 8. Confirm data in Yugabyte
 
-### 9.1 - Check `previous_employees_by_job_title`
+### 8.1 - Check `previous_employees_by_job_title`
 
 ```bash
 docker exec -it yugabyte ycqlsh -e "select * from demo.previous_employees_by_job_title where job_title='Dentist';"
 ```
 
-### 9.2 - Check `days_worked_by_previous_employees_by_job_title`
+### 8.2 - Check `days_worked_by_previous_employees_by_job_title`
 ```bash
 docker exec -it yugabyte ycqlsh -e "select * from demo.days_worked_by_previous_employees_by_job_title where job_title='Dentist';"
 ```
