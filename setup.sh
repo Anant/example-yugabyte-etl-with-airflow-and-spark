@@ -19,6 +19,7 @@ airflow db init
 
 airflow users create \
     --username admin \
+    --password admin \
     --firstname Peter \
     --lastname Parker \
     --role Admin \
