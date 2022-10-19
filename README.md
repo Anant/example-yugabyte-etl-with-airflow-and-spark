@@ -5,7 +5,7 @@ In this walkthrough, we will cover how we can use [Airflow](https://airflow.apac
 For this walkthrough, we will use 2 Spark jobs. The first Spark job will load 100k rows from a CSV and then write it into a Yugabyte table. The second Spark job will read the data from the prior Yugabyte table, do some transformations, and then write the transformed data into a different Yugabyte table. We also used PySpark to reduce the number of steps to get this working. If we used Scala, we would be required to build the JAR's and that would require more time.
 
 If you have not already opened this in gitpod, then `CTR + Click` the button below and get started! <br></br>
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://github.com/Anant/example-yugabyte-etl-with-airflow-and-spark)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/Anant/example-yugabyte-etl-with-airflow-and-spark)
 
 ## 1. Set-up Dockerized Yugabyte
 
