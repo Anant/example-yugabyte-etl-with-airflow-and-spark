@@ -76,12 +76,12 @@ If it does not exist yet, give it a few seconds to refresh.
 ### 9.1 - Check `previous_employees_by_job_title`
 
 ```bash
-select * from demo.previous_employees_by_job_title where job_title='Dentist';
+docker exec -it yugabyte ycqlsh -e "select * from demo.previous_employees_by_job_title where job_title='Dentist';"
 ```
 
 ### 9.2 - Check `days_worked_by_previous_employees_by_job_title`
 ```bash
-select * from demo.days_worked_by_previous_employees_by_job_title where job_title='Dentist';
+docker exec -it yugabyte ycqlsh -e "select * from demo.days_worked_by_previous_employees_by_job_title where job_title='Dentist';"
 ```
 
 And that will wrap up our walkthrough. Again, this is a introduction on how to set up a basic Yugabyte ETL process run by Airflow and Spark. As mentioned above, these baby steps can be used to further expand and create more complex and scheduled / repeated Yugabyte ETL processes run by Airflow and Spark.
