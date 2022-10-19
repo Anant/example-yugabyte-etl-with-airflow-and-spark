@@ -17,7 +17,7 @@ with DAG(
     tags=['example'],
 ) as dag:
     # need the below to resolve py4j.protocol.Py4JJavaError: An error occurred while calling o32.load errors
-    os.environ['SPARK_HOME'] = '/workspace/example-yugabyte-etl-with-airflow-and-spark/spark-3.2.2-bin-hadoop2.7'
+    os.environ['SPARK_HOME'] = '/workspace/example-yugabyte-etl-with-airflow-and-spark/spark-3.2.2-bin-hadoop3.2'
     sys.path.append(os.path.join(os.environ['SPARK_HOME'], 'bin'))
 
     JOB_CONF = {
