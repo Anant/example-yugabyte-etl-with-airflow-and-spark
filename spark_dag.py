@@ -33,6 +33,4 @@ with DAG(
         packages="com.yugabyte.spark:spark-cassandra-connector_2.12:3.2-yb-2"
     )
 
-    load_and_write
-    # etl_job
-    # load_and_write >> etl_job
+    load_and_write >> etl_job
